@@ -1,10 +1,11 @@
+using System.Data.Common;
 using Microsoft.EntityFrameworkCore;
 using ProniaApp.DAL;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<AppDbContext>(ops=>
-    ops.UseSqlServer("Server=localhost;Database=ProniaDbAPA201;User Id=sa;Password=future&forever&start&now_2025;TrustServerCertificate=True; Encrypt=False")
+    ops.UseSqlServer(builder.Configuration.GetConnectionString("Default"))
 );
 var app = builder.Build();
 
