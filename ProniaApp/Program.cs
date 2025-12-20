@@ -13,7 +13,7 @@ app.UseStaticFiles();
 // home/index
 app.MapControllerRoute(
     name:"default",
-    pattern:"{controller=home}/{action=index}"
+    pattern:"{controller=home}/{action=index}/{id?}"
 );
 
 
