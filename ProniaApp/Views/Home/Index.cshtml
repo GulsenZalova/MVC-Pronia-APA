@@ -1,5 +1,7 @@
 @using ProniaApp.Models
 @using ProniaApp.ViewModels
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, AuthoringTagHelpers
 @model HomeVM
 
       <!-- Begin Slider Area -->
@@ -244,7 +246,7 @@
                           </div>
                         </div>
                         <div class="product-content">
-                          <a class="product-name" href="shop.html"
+                          <a class="product-name" asp-controller="shop" asp-action="detail" asp-route-id="@product.Id"
                             >@product.Name</a
                           >
                           <div class="price-box pb-1">
