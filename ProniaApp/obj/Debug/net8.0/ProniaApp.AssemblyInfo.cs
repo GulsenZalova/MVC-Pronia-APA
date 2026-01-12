@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ProniaApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+638ee3d574bbb16f389a986326dd24cb7258dba2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e37eafc5eac1db9704a3387973f4e2f9c6f8a138")]
 [assembly: System.Reflection.AssemblyProductAttribute("ProniaApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ProniaApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

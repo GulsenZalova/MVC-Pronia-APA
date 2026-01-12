@@ -1,6 +1,7 @@
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Identity.Client;
 using ProniaApp.Admin.ViewModels;
 using ProniaApp.DAL;
 using ProniaApp.Models;
@@ -77,6 +78,70 @@ namespace ProniaApp.Areas.Admin.Controllers
             await _context.Products.AddAsync(product) ;
             await _context.SaveChangesAsync();  
             return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<ActionResult> Update(int? id)
+        {
+            if(id==null || id < 1)
+            {
+                return BadRequest();
+            }
+
+            Product product = await _context.Products.FirstOrDefaultAsync(p=>p.Id==id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+            
+            UpdateProductVM updateProductVM= new UpdateProductVM()
+            {
+                Name=product.Name,
+                Description=product.Description,
+                Price=product.Price,
+                SKU=product.SKU,
+                CategoryId=product.CategoryId,
+                Categories=await _context.Categories.ToListAsync(),
+            };
+            return View(updateProductVM);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Update(int? id,UpdateProductVM updateProductVM)
+        {
+             if(id==null || id < 1)
+            {
+                return BadRequest();
+            }
+
+            Product product = await _context.Products.FirstOrDefaultAsync(p=>p.Id==id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+            
+            updateProductVM.Categories= await _context.Categories.ToListAsync();
+
+            if (!ModelState.IsValid)
+            {
+                return View(updateProductVM);
+            }
+           
+            bool result= await _context.Categories.AnyAsync(c=>c.Id==updateProductVM.CategoryId);
+
+            if (!result)
+            {
+                ModelState.AddModelError(nameof(Category.Id),"bele bir category yoxdur");
+                return View(result);
+            }
+
+            product.Name=updateProductVM.Name;
+            product.Description=updateProductVM.Description;
+            product.CategoryId=updateProductVM.CategoryId;
+            product.SKU=updateProductVM.SKU;
+            product.Price=updateProductVM.Price;
+
+             await _context.SaveChangesAsync();
+             return RedirectToAction(nameof(Index));
         }
     }
 }

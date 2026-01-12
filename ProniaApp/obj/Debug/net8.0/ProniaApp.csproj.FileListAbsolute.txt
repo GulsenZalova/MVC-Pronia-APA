@@ -139,3 +139,4 @@
 /Users/gulshanzalova/Desktop/MVCProjects-APA/ProniaApp/obj/Debug/net8.0/ProniaApp.csproj.AssemblyReference.cache
 /Users/gulshanzalova/Desktop/MVCProjects-APA/ProniaApp/obj/Debug/net8.0/ProniaApp.csproj.Up2Date
 /Users/gulshanzalova/Desktop/MVCProjects-APA/ProniaApp/obj/Debug/net8.0/ProniaApp.sourcelink.json
+/Users/gulshanzalova/Desktop/MVCProjects-APA/ProniaApp/bin/Debug/net8.0/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
